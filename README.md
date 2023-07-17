@@ -14,6 +14,7 @@ Il faut installer les dépendances :
 
 ```bash
 composer install
+npm install
 ```
 
 Il faut ensuite copier le fichier `.env.example` :
@@ -29,31 +30,32 @@ N'oublions pas de générer la clé :
 php artisan key:generate
 ```
 
+N'oubliez pas la clé API dans le `.env` :
+
+```bash
+THEMOVIEDB_API_KEY=???
+```
+
 Pour la base de données, on a les migrations :
 
 ```bash
 php artisan migrate
+# Pour remplir la base
+php artisan migrate:fresh --seed
 ```
 
-## Outils
+## Workflow
+
+Si vous travaillez sur le front, n'oubliez pas de lancer le serveur de dev :
+
+```bash
+npm run dev
+```
+
+## Commandes utiles
 
 Si on veut lister les routes de l'application :
 
 ```bash
 php artisan route:list
-```
-
-Pour remplir la BDD, on peut faire :
-
-```bash
-# Ajoute les données
-php artisan db:seed
-# Vide la base
-php artisan migrate:fresh --seed
-```
-
-N'oubliez pas la clé API dans le `.env` :
-
-```bash
-THEMOVIEDB_API_KEY=???
 ```
