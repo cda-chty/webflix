@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
                 'released_at' => $result['release_date'],
                 'youtube' => $result['videos']['results'][0]['key'] ?? null,
                 'category_id' => $result['genres'][0]['id'] ?? null,
-             ]);
+            ]);
         }
 
         /* Movie::factory(100)->create(function () {
