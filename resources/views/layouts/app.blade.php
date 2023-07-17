@@ -35,12 +35,12 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container py-5">
         @yield('content')
     </div>
 
-    <footer>
-        {{ date('Y') }}
+    <footer class="py-5">
+        <p class="text-center">{{ date('Y') }} - Webflix</p>
     </footer>
 </body>
 </html>
