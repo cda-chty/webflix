@@ -51,3 +51,9 @@ php artisan db:seed
 # Vide la base
 php artisan migrate:fresh --seed
 ```
+
+N'oubliez pas la clé API dans le `.env` :
+
+```bash
+THEMOVIEDB_API_KEY=???
+```
