@@ -42,3 +42,12 @@ Si on veut lister les routes de l'application :
 ```bash
 php artisan route:list
 ```
+
+Pour remplir la BDD, on peut faire :
+
+```bash
+# Ajoute les données
+php artisan db:seed
+# Vide la base
+php artisan migrate:fresh --seed
+```
