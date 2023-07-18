@@ -38,7 +38,7 @@ class MovieController extends Controller
             'youtube' => 'nullable|string',
             'cover' => 'required|image|max:2048',
             'released_at' => 'nullable|date',
-            'category' => 'nullable|exists:categories,id',
+            'category' => 'required|exists:categories,id',
         ]);
 
         Movie::create([
