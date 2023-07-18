@@ -46,6 +46,9 @@ Route::get('/films', [MovieController::class, 'index']);
 Route::get('/film/{id}', [MovieController::class, 'show']);
 Route::get('/films/creer', [MovieController::class, 'create'])->middleware('auth');
 Route::post('/films/creer', [MovieController::class, 'store'])->middleware('auth');
+Route::get('/film/{movie}/modifier', [MovieController::class, 'edit'])->middleware('auth');
+Route::put('/film/{movie}/modifier', [MovieController::class, 'update'])->middleware('auth');
+Route::delete('/film/{id}', [MovieController::class, 'destroy'])->middleware('auth');
 
 // Authentification
 Route::get('/login', [LoginController::class, 'index'])->name('login');

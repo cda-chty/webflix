@@ -25,6 +25,16 @@
                         @endif
                         {{ $movie->category->name }}
                     </p>
+                    @if (Auth::user() && $movie->user_id === Auth::user()->id)
+                    <div class="text-center">
+                        <a href="/film/{{ $movie->id }}/modifier" class="btn btn-lg">🖋️</a>
+                        <form class="d-inline" action="/film/{{ $movie->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-lg">🗑️</button>
+                        </form>
+                    </div>
+                    @endif
                 </div>
             </div>
         @endforeach

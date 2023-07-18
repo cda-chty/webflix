@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MovieController extends Controller
 {
@@ -53,5 +54,24 @@ class MovieController extends Controller
         ]);
 
         return redirect('/films');
+    }
+
+    public function edit(Movie $movie)
+    {
+        return view('movies.edit', [
+            'categories' => Category::all(),
+            'movie' => $movie,
+        ]);
+    }
+
+    public function destroy(Request $request, string $id)
+    {
+        // On s'assure que l'utilisateur connecté est bien le propriétaire du film
+        $movie = Movie::findOrFail($id);
+        Gate::allowIf($movie->user_id === $request->user()->id);
+
+        Movie::destroy($id);
+
+        return redirect('/films')->with('message', 'Le film a été supprimé.');
     }
 }
