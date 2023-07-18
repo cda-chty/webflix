@@ -44,6 +44,18 @@ php artisan migrate
 php artisan migrate:fresh --seed
 ```
 
+Attention pour l'upload, modifiez le `.env` :
+
+```
+FILESYSTEM_DISK=public
+```
+
+Et lancez la commande :
+
+```bash
+php artisan storage:link
+```
+
 ## Workflow
 
 Si vous travaillez sur le front, n'oubliez pas de lancer le serveur de dev :

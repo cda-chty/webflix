@@ -44,8 +44,8 @@ Route::get('/category-test', function () {
 // Movies
 Route::get('/films', [MovieController::class, 'index']);
 Route::get('/film/{id}', [MovieController::class, 'show']);
-Route::get('/films/creer', [MovieController::class, 'create']);
-Route::post('/films/creer', [MovieController::class, 'store']);
+Route::get('/films/creer', [MovieController::class, 'create'])->middleware('auth');
+Route::post('/films/creer', [MovieController::class, 'store'])->middleware('auth');
 
 // Authentification
 Route::get('/login', [LoginController::class, 'index'])->name('login');

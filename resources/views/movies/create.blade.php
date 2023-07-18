@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -32,6 +32,14 @@
             <label for="youtube">Youtube</label>
             <input type="text" name="youtube" id="youtube" value="{{ old('youtube') }}">
             @error('youtube')
+                <div>{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div>
+            <label for="cover">Image</label>
+            <input type="file" name="cover" id="cover">
+            @error('cover')
                 <div>{{ $message }}</div>
             @enderror
         </div>
