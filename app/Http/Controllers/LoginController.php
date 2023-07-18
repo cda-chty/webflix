@@ -20,11 +20,23 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
             return redirect('/films');
         }
 
         return back()->withErrors([
             'email' => 'Identifiants invalides.',
-        ]);
+        ])->onlyInput('email');
+    }
+
+    public function destroy(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

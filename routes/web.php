@@ -49,3 +49,4 @@ Route::post('/films/creer', [MovieController::class, 'store']);
 // Authentification
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'store']);
+Route::delete('/logout', [LoginController::class, 'destroy']);
