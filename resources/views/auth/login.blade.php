@@ -7,10 +7,19 @@
                 <div class="card-header">Connexion</div>
 
                 <div class="card-body">
+                    @if ($errors->any())
+                        <ul class="alert alert-danger px-4">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <form action="" method="post">
+                        @csrf
                         <div class="mb-3">
                             <label for="email">Email</label>
-                            <input type="text" name="email" id="email" class="form-control mt-2">
+                            <input type="text" name="email" id="email" class="form-control mt-2" value="{{ old('email') }}">
                         </div>
                         <div class="mb-3">
                             <label for="password">Mot de passe</label>
