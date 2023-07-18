@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FiorellaFriendController;
 use App\Http\Controllers\HomeController;
@@ -47,6 +48,9 @@ Route::get('/films/creer', [MovieController::class, 'create']);
 Route::post('/films/creer', [MovieController::class, 'store']);
 
 // Authentification
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
+
+// Mon compte
+Route::get('/mon-compte', [AccountController::class, 'index'])->middleware('auth');

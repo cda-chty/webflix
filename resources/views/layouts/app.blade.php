@@ -40,7 +40,6 @@
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                                 <li><a class="dropdown-item" href="/mon-compte">Mon compte</a></li>
                                 <li>
-                                    <a class="dropdown-item" href="/logout">Déconnexion</a>
                                     <form action="/logout" method="post">
                                         @csrf
                                         @method('delete')
