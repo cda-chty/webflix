@@ -18,7 +18,7 @@ class ActorFactory extends Factory
     {
         return [
             'name' => fake()->firstName(),
-            'avatar' => 'https://picsum.photos/id/'.rand(0, 1064).'/400/600',
+            'avatar' => 'https://picsum.photos/seed/'.rand(0, 1064).'/400/600',
             'birthday' => fake()->dateTimeBetween('-80 years', '18 years'),
         ];
     }
