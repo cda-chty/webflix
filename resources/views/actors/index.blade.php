@@ -9,6 +9,7 @@
                         <img class="card-img-top" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
                         <div class="card-body">
                             <h3>{{ $actor->name }}</h3>
+                            <small>{{ $actor->birthday->age }} ans</small>
                         </div>
                     </a>
                 </div>
