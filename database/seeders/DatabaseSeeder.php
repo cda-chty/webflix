@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Actor;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\User;
@@ -67,5 +68,8 @@ class DatabaseSeeder extends Seeder
             // 100 fois une catégorie aléatoire
             return ['category_id' => Category::all()->random()];
         }); */
+
+        // Acteurs
+        Actor::factory(100)->create();
     }
 }
