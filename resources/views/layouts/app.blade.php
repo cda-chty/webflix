@@ -8,6 +8,7 @@
             Webflix
         @show
     </title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -21,15 +22,15 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" href="/">Accueil</a>
-                    <a class="nav-link" href="/fiorella">Fiorella</a>
-                    <a class="nav-link" href="/films">Films</a>
-                    <a class="nav-link" href="/categories">Catégories</a>
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Accueil</a>
+                    <a class="nav-link {{ request()->is('films') ? 'active' : '' }}" href="/films">Films</a>
+                    <a class="nav-link {{ request()->is('categories') ? 'active' : '' }}" href="/categories">Catégories</a>
                     <!-- @todo Faire un dropdown -->
                     <!-- <a class="nav-link" href="/fiorella?color=blue">Fiorella bleue</a>
                     <a class="nav-link" href="/fiorella/emma">Fiorella et Emma</a>
                     <a class="nav-link" href="/fiorella/paul">Fiorella et Paul</a> -->
-                    <a class="nav-link" href="/a-propos">A propos</a>
+                    <a class="nav-link {{ request()->is('a-propos') ? 'active' : '' }}" href="/a-propos">A propos</a>
+                    <a class="nav-link {{ request()->is('fiorella') ? 'active' : '' }}" href="/fiorella">Fiorella</a>
                 </div>
                 <div class="navbar-nav">
                     @auth <!-- si on est connecté -->
