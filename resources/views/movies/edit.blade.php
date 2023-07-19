@@ -5,6 +5,7 @@
 
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
+        @method('put')
 
         <div>
             <label for="title">Titre</label>

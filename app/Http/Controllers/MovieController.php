@@ -64,6 +64,27 @@ class MovieController extends Controller
         ]);
     }
 
+    public function update(Request $request, Movie $movie)
+    {
+        $validated = $request->validate([
+            // Pour le unique, on vérifie dans la table movies sauf pour le film modifié
+            'title' => 'required|unique:movies,title,'.$movie->id.'|min:2',
+            'synopsis' => 'required|min:10',
+            // ^[0-9]+h?[0-5]?[0-9]?$ => Version améliorée
+            'duration' => ['required', 'regex:/^([0-9]+h[0-5]?[0-9]?|[0-5]?[0-9]?)$/'],
+            'youtube' => 'nullable|string',
+            'cover' => 'nullable|image|max:2048',
+            'released_at' => 'nullable|date',
+            'category' => 'required|exists:categories,id',
+        ]);
+
+        $validated['category_id'] = $validated['category']; // Fix column name
+        unset($validated['category']);
+        $movie->update($validated);
+
+        return redirect('/films');
+    }
+
     public function destroy(Request $request, string $id)
     {
         // On s'assure que l'utilisateur connecté est bien le propriétaire du film

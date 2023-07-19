@@ -32,6 +32,16 @@ class Movie extends Model
                 $zero = ($minutes < 10) ? '0' : '';
 
                 return $hours.'h'.$zero.$minutes;
+            },
+            set: function ($value) {
+                // $value = '2h24';
+                $time = explode('h', $value);
+
+                if (count($time) === 2) {
+                    return $time[0] * 60 + (int) $time[1];
+                }
+
+                return $time[0];
             }
         );
     }
