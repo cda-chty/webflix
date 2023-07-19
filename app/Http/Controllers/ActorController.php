@@ -13,4 +13,9 @@ class ActorController extends Controller
             'actors' => Actor::paginate(8),
         ]);
     }
+
+    public function show(Actor $actor)
+    {
+        return view('actors.show', compact('actor'));
+    }
 }
