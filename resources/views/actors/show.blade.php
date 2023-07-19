@@ -17,7 +17,9 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h1>{{ $actor->name }}</h1>
+                    @if ($actor->birthday)
                     <p>Âge: {{ $actor->birthday->age }} ans</p>
+                    @endif
                 </div>
             </div>
         </div>
