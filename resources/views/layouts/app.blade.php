@@ -25,10 +25,7 @@
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Accueil</a>
                     <a class="nav-link {{ request()->is('films') ? 'active' : '' }}" href="/films">Films</a>
                     <a class="nav-link {{ request()->is('categories') ? 'active' : '' }}" href="/categories">Catégories</a>
-                    <!-- @todo Faire un dropdown -->
-                    <!-- <a class="nav-link" href="/fiorella?color=blue">Fiorella bleue</a>
-                    <a class="nav-link" href="/fiorella/emma">Fiorella et Emma</a>
-                    <a class="nav-link" href="/fiorella/paul">Fiorella et Paul</a> -->
+                    <a class="nav-link {{ request()->is('acteurs') ? 'active' : '' }}" href="/acteurs">Acteurs</a>
                     <a class="nav-link {{ request()->is('a-propos') ? 'active' : '' }}" href="/a-propos">A propos</a>
                     <a class="nav-link {{ request()->is('fiorella') ? 'active' : '' }}" href="/fiorella">Fiorella</a>
                 </div>
