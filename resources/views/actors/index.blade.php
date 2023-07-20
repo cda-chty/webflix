@@ -20,6 +20,17 @@
                             @if ($actor->birthday)
                             <small>{{ $actor->birthday->age }} ans</small>
                             @endif
+
+                            @if (Auth::user())
+                            <div class="text-center">
+                                <a href="/acteur/{{ $actor->id }}/modifier" class="btn btn-lg">🖋️</a>
+                                <form class="d-inline" action="/acteur/{{ $actor->id }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-lg">🗑️</button>
+                                </form>
+                            </div>
+                            @endif
                         </div>
                     </a>
                 </div>

@@ -56,6 +56,9 @@ Route::get('/acteurs', [ActorController::class, 'index']);
 Route::get('/acteur/{actor}', [ActorController::class, 'show'])->name('actors.show');
 Route::get('/acteurs/creer', [ActorController::class, 'create'])->middleware('auth');
 Route::post('/acteurs/creer', [ActorController::class, 'store'])->middleware('auth');
+Route::get('/acteur/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth');
+Route::put('/acteur/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth');
+Route::delete('/acteur/{actor}', [ActorController::class, 'destroy'])->middleware('auth');
 
 // Authentification
 Route::get('/login', [LoginController::class, 'index'])->name('login');
