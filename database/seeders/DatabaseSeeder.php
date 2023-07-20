@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
                 'append_to_response' => 'videos,credits',
             ])->throw()->json();
 
-            Movie::factory()->create([
+            $movie = Movie::factory()->create([
                 'title' => $result['title'],
                 'synopsis' => $result['overview'],
                 'duration' => $result['runtime'],
@@ -73,11 +73,13 @@ class DatabaseSeeder extends Seeder
                     'language' => 'fr-FR',
                 ])->throw()->json();
 
-                Actor::factory()->create([
+                $actor = Actor::factory()->create([
                     'name' => $cast['name'],
                     'avatar' => 'https://image.tmdb.org/t/p/w400'.$cast['profile_path'],
                     'birthday' => $cast['birthday'],
                 ]);
+
+                $movie->actors()->attach($actor);
             }
         }
 
