@@ -73,7 +73,9 @@ class DatabaseSeeder extends Seeder
                     'language' => 'fr-FR',
                 ])->throw()->json();
 
-                $actor = Actor::factory()->create([
+                // Si l'acteur n'existe pas déjà (par rapport à son id), on va le créer
+                // makeOne permet de créer un objet Actor
+                $actor = Actor::factory()->makeOne()->firstOrCreate(['id' => $cast['id']], [
                     'name' => $cast['name'],
                     'avatar' => 'https://image.tmdb.org/t/p/w400'.$cast['profile_path'],
                     'birthday' => $cast['birthday'],
