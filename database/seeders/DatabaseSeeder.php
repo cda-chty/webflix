@@ -26,8 +26,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'matthieu@boxydev.com', 'name' => 'Matthieu',
         ]);
 
+        // ------ VERSION SANS API
+        // Catégories
         // Category::factory(5)->create();
         // Category::factory()->create(['name' => 'Action']);
+
+        // Acteurs
+        // Actor::factory(100)->create();
+
+        // Films
+        // Movie::factory(100)->has(Actor::factory(5))->create(function () {
+            // 100 fois une catégorie aléatoire
+        //     return ['category_id' => Category::all()->random()];
+        // });
+        // ------ VERSION SANS API
 
         // Les catégories sur l'API
         // https://api.themoviedb.org/3/genre/movie/list?api_key=???&language=fr
@@ -81,16 +93,9 @@ class DatabaseSeeder extends Seeder
                     'birthday' => $cast['birthday'],
                 ]);
 
-                $movie->actors()->attach($actor);
+                $movie->actors()->attach($actor); // Lie l'acteur au film
+                // $actor->movies()->attach($movie);
             }
         }
-
-        /* Movie::factory(100)->create(function () {
-            // 100 fois une catégorie aléatoire
-            return ['category_id' => Category::all()->random()];
-        }); */
-
-        // Acteurs
-        // Actor::factory(100)->create();
     }
 }

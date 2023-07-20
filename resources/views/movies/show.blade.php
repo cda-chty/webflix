@@ -31,7 +31,7 @@
                     </button>
                     @endif
 
-                    @if ($movie->actors->isNotEmpty())
+                    @if (count($movie->actors) > 0)
                         <h2 class="mt-4">Acteurs</h2>
                         <div class="row row-cols-2 row-cols-lg-5">
                             @foreach ($movie->actors as $actor)
