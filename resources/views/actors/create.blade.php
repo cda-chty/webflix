@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="birthday" class="form-label">Date de sortie</label>
+                    <label for="birthday" class="form-label">Date de naissance</label>
                     <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="form-control @error('birthday') is-invalid @enderror">
                     @error('birthday')
                         <div class="invalid-feedback">{{ $message }}</div>
