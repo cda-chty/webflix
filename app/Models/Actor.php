@@ -11,7 +11,7 @@ class Actor extends Model
     use HasFactory;
 
     protected $casts = [
-        'birthday' => 'date',
+        'birthday' => 'date', // String devient Carbon
     ];
 
     protected $guarded = [];
