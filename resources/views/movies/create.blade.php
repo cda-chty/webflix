@@ -1,72 +1,80 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="" method="post" enctype="multipart/form-data">
-        @csrf
-
-        <div>
-            <label for="title">Titre</label>
-            <input type="text" name="title" id="title" value="{{ old('title') }}">
-            @error('title')
-                <div>{{ $message }}</div>
-            @enderror
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <form action="" method="post" enctype="multipart/form-data">
+                @csrf
+        
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titre</label>
+                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control">
+                    @error('title')
+                        <div>{{ $message }}</div>
+                    @enderror
+                </div>
+        
+                <div class="mb-3">
+                    <label for="synopsis" class="form-label">Synopsis</label>
+                    <textarea name="synopsis" id="synopsis" class="form-control">{{ old('synopsis') }}</textarea>
+                    @error('synopsis')
+                        <div>{{ $message }}</div>
+                    @enderror
+                </div>
+        
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="duration" class="form-label">Durée</label>
+                        <input type="text" name="duration" id="duration" value="{{ old('duration') }}" class="form-control">
+                        @error('duration')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+            
+                    <div class="col">
+                        <label for="youtube" class="form-label">Youtube</label>
+                        <input type="text" name="youtube" id="youtube" value="{{ old('youtube') }}" class="form-control">
+                        @error('youtube')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="cover" class="form-label">Image</label>
+                    <input type="file" name="cover" id="cover" class="form-control">
+                    @error('cover')
+                        <div>{{ $message }}</div>
+                    @enderror
+                </div>
+        
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="released_at" class="form-label">Date de sortie</label>
+                        <input type="date" name="released_at" id="released_at" value="{{ old('released_at') }}" class="form-control">
+                        @error('released_at')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+            
+                    <div class="col">
+                        <label for="category" class="form-label">Catégorie</label>
+                        <select name="category" id="category" class="form-select">
+                            <option disabled selected>Choisir une catégorie</option>
+                            @foreach ($categories->sortBy('name') as $category)
+                                <option value="{{ $category->id }}" @selected($category->id == old('category'))>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+        
+                <button class="btn btn-primary">Ajouter</button>
+            </form>
         </div>
-
-        <div>
-            <label for="synopsis">Synopsis</label>
-            <textarea name="synopsis" id="synopsis">{{ old('synopsis') }}</textarea>
-            @error('synopsis')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="duration">Durée</label>
-            <input type="text" name="duration" id="duration" value="{{ old('duration') }}">
-            @error('duration')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="youtube">Youtube</label>
-            <input type="text" name="youtube" id="youtube" value="{{ old('youtube') }}">
-            @error('youtube')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="cover">Image</label>
-            <input type="file" name="cover" id="cover">
-            @error('cover')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="released_at">Date de sortie</label>
-            <input type="date" name="released_at" id="released_at" value="{{ old('released_at') }}">
-            @error('released_at')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div>
-            <label for="category">Catégorie</label>
-            <select name="category" id="category">
-                <option disabled selected>Choisir une catégorie</option>
-                @foreach ($categories->sortBy('name') as $category)
-                    <option value="{{ $category->id }}" @selected($category->id == old('category'))>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-            @error('category')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-
-        <button>Ajouter</button>
-    </form>
+    </div>
 @endsection
