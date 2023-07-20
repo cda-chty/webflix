@@ -12,4 +12,6 @@ class Actor extends Model
     protected $casts = [
         'birthday' => 'date',
     ];
+
+    protected $guarded = [];
 }

@@ -54,6 +54,8 @@ Route::delete('/film/{id}', [MovieController::class, 'destroy'])->middleware('au
 // Acteurs
 Route::get('/acteurs', [ActorController::class, 'index']);
 Route::get('/acteur/{actor}', [ActorController::class, 'show'])->name('actors.show');
+Route::get('/acteurs/creer', [ActorController::class, 'create'])->middleware('auth');
+Route::post('/acteurs/creer', [ActorController::class, 'store'])->middleware('auth');
 
 // Authentification
 Route::get('/login', [LoginController::class, 'index'])->name('login');

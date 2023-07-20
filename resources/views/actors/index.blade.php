@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Auth::user())
+        <div class="text-center mb-4">
+            <a class="btn btn-primary" href="/acteurs/creer">Créer un acteur</a>
+        </div>
+    @endif
+
     <div class="actor-list row row-cols-2 row-cols-lg-4 gy-4 mb-5">
         @forelse ($actors as $actor)
             <div class="col">
