@@ -6,7 +6,9 @@
             <div class="col">
                 <div class="card">
                     <a href="{{ route('actors.show', $actor) }}" class="text-decoration-none text-dark">
+                        @if ($actor->avatar)
                         <img class="card-img-top" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
+                        @endif
                         <div class="card-body">
                             <h3>{{ $actor->name }}</h3>
                             @if ($actor->birthday)

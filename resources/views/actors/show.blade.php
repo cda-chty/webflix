@@ -9,11 +9,13 @@
     </nav>
 
     <div class="row">
+        @if ($actor->avatar)
         <div class="col-lg-4">
             <img class="img-fluid rounded-5" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
         </div>
+        @endif
 
-        <div class="col-lg-8">
+        <div class="@if ($actor->avatar) col-lg-8 @else col-lg-12 @endif">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h1>{{ $actor->name }}</h1>
