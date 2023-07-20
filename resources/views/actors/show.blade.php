@@ -22,6 +22,20 @@
                     @if ($actor->birthday)
                     <p>Âge: {{ $actor->birthday->age }} ans</p>
                     @endif
+
+                    @if ($actor->movies->isNotEmpty())
+                        <h2 class="mt-4">Films</h2>
+                        <div class="row row-cols-2 row-cols-lg-5 mt-5">
+                            @foreach ($actor->movies as $movie)
+                                <div class="col scale">
+                                    <a class="text-decoration-none text-dark" href="/film/{{ $movie->id }}">
+                                        <img class="img-fluid" src="{{ $movie->cover }}" alt="{{ $movie->title }}">
+                                        <h6 class="mt-2">{{ $movie->title }}</h6>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
