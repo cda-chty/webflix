@@ -3,6 +3,8 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-lg-8">
+            <h1>Créer un film</h1>
+
             <form action="" method="post" enctype="multipart/form-data">
                 @csrf
         
