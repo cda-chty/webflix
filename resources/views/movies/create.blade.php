@@ -46,7 +46,7 @@
 
         <div>
             <label for="released_at">Date de sortie</label>
-            <input type="date" name="released_at" id="released_at" {{ old('released_at') }}>
+            <input type="date" name="released_at" id="released_at" value="{{ old('released_at') }}">
             @error('released_at')
                 <div>{{ $message }}</div>
             @enderror
