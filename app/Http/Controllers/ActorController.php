@@ -78,7 +78,7 @@ class ActorController extends Controller
 
     public function destroy(Actor $actor)
     {
-        Storage::delete(str($actor->cover)->remove('/storage/')); // Supprimer l'image
+        Storage::delete(str($actor->avatar)->remove('/storage/')); // Supprimer l'image
         $actor->delete();
 
         return redirect('/acteurs')->with('message', 'L\'acteur a été supprimé.');
