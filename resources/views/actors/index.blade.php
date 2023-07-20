@@ -7,10 +7,10 @@
         </div>
     @endif
 
-    <div class="actor-list row row-cols-2 row-cols-lg-4 gy-4 mb-5">
+    <div class="row row-cols-2 row-cols-lg-4 gy-4 mb-5">
         @forelse ($actors as $actor)
             <div class="col">
-                <div class="card">
+                <div class="card scale">
                     <a href="{{ route('actors.show', $actor) }}" class="text-decoration-none text-dark">
                         @if ($actor->avatar)
                         <img class="card-img-top" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">

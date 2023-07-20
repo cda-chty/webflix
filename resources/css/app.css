@@ -32,10 +32,10 @@ body {
     margin-bottom: 10px;
 }
 
-.actor-list .card {
+.scale {
     transition: 200ms;
 }
 
-.actor-list .card:hover {
+.scale:hover {
     transform: scale(1.05);
 }
