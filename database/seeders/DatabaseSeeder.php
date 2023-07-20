@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             $result = Http::get('https://api.themoviedb.org/3/movie/'.$result['id'], [
                 'api_key' => config('services.themoviedb.key'),
                 'language' => 'fr-FR',
-                'append_to_response' => 'videos',
+                'append_to_response' => 'videos,credits',
             ])->throw()->json();
 
             Movie::factory()->create([
@@ -62,6 +62,23 @@ class DatabaseSeeder extends Seeder
                 'category_id' => $result['genres'][0]['id'] ?? null,
                 'user_id' => User::all()->random(),
             ]);
+
+            $casts = collect($result['credits']['cast'])
+                ->where('known_for_department', 'Acting')
+                ->whereNotNull('profile_path')->take(5);
+
+            foreach ($casts as $cast) {
+                $cast = Http::get('https://api.themoviedb.org/3/person/'.$cast['id'], [
+                    'api_key' => config('services.themoviedb.key'),
+                    'language' => 'fr-FR',
+                ])->throw()->json();
+
+                Actor::factory()->create([
+                    'name' => $cast['name'],
+                    'avatar' => 'https://image.tmdb.org/t/p/w400'.$cast['profile_path'],
+                    'birthday' => $cast['birthday'],
+                ]);
+            }
         }
 
         /* Movie::factory(100)->create(function () {
@@ -70,6 +87,6 @@ class DatabaseSeeder extends Seeder
         }); */
 
         // Acteurs
-        Actor::factory(100)->create();
+        // Actor::factory(100)->create();
     }
 }
