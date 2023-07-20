@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="actor-list row row-cols-2 row-cols-lg-4 gy-4 mb-5">
-        @foreach ($actors as $actor)
+        @forelse ($actors as $actor)
             <div class="col">
                 <div class="card">
                     <a href="{{ route('actors.show', $actor) }}" class="text-decoration-none text-dark">
@@ -16,7 +16,11 @@
                     </a>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="col flex-grow-1">
+                <h1 class="text-center">Il n'y a pas d'acteurs</h1>
+            </div>
+        @endforelse
     </div>
 
     {{ $actors->links() }}
