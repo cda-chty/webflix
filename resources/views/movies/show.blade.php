@@ -30,6 +30,20 @@
                         Voir la bande annonce
                     </button>
                     @endif
+
+                    @if ($movie->actors->isNotEmpty())
+                        <h2 class="mt-4">Acteurs</h2>
+                        <div class="row row-cols-2 row-cols-lg-5">
+                            @foreach ($movie->actors as $actor)
+                                <div class="col scale">
+                                    <a class="text-decoration-none text-dark" href="{{ route('actors.show', $actor) }}">
+                                        <img class="img-fluid" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
+                                        <h6 class="mt-2">{{ $actor->name }}</h6>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
