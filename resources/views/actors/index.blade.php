@@ -11,6 +11,7 @@
         @forelse ($actors as $actor)
             <div class="col">
                 <div class="card scale">
+                    <!-- /acteur/{{ $actor->id }} -->
                     <a href="{{ route('actors.show', $actor) }}" class="text-decoration-none text-dark">
                         @if ($actor->avatar)
                         <img class="card-img-top" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
