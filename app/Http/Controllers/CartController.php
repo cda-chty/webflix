@@ -14,6 +14,8 @@ class CartController extends Controller
         // [['id' => 2], ['id' => 4], ['id' => 6]]
         foreach ($cart as $index => $item) {
             $cart[$index]['movie'] = Movie::find($item['id']);
+            // @todo Prix total de chaque produit
+            // @todo Prix total du panier
         }
 
         return view('cart', ['cart' => $cart]);
@@ -23,11 +25,11 @@ class CartController extends Controller
     {
         $cart = session('cart', []);
 
-        // Si le panier contient le produit, on incrémente
+        // Si le panier contient le produit, on incrémente la quantité
         if (collect($cart)->contains('id', $movie->id)) {
             $index = array_search($movie->id, array_column($cart, 'id'));
             $cart[$index]['quantity']++;
-            session()->put('cart', $cart);
+            session()->put('cart', $cart); // Mettre à jour la session
 
             return back();
         }
