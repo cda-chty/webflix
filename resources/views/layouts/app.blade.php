@@ -30,6 +30,9 @@
                     <a class="nav-link {{ request()->is('fiorella') ? 'active' : '' }}" href="/fiorella">Fiorella</a>
                 </div>
                 <div class="navbar-nav">
+                    <a class="nav-link {{ request()->is('panier') ? 'active' : '' }}" href="/panier">
+                        Panier ({{ count(session('cart', [])) }})
+                    </a>
                     @auth <!-- si on est connecté -->
                         <div class="nav-item dropdown">
                             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
