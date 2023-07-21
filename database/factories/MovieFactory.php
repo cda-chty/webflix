@@ -22,6 +22,7 @@ class MovieFactory extends Factory
             'title' => fake()->sentence(3),
             'synopsis' => fake()->text(),
             'duration' => fake()->numberBetween(100, 200),
+            'price' => fake()->numberBetween(100, 10000), // 110 = 1,10 euros
             'youtube' => Str::random(8),
             // 'cover' => fake()->imageUrl(),
             'cover' => 'https://picsum.photos/id/'.rand(0, 1064).'/400/600',
