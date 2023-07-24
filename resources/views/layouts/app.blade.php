@@ -31,7 +31,7 @@
                 </div>
                 <div class="navbar-nav">
                     <a class="nav-link {{ request()->is('panier') ? 'active' : '' }}" href="/panier">
-                        Panier ({{ collect(session('cart', []))->sum('quantity') }})
+                        Panier ({{ App\Cart::count() }})
                     </a>
                     @auth <!-- si on est connecté -->
                         <div class="nav-item dropdown">

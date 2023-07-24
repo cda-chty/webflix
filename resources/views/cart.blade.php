@@ -11,11 +11,15 @@
                         {{ $item['movie']->title }}
                         <strong>x{{ $item['quantity'] }}</strong>
                     </h6>
-                    <p>{{ $item['movie']->price }}</p>
+                    <p>{{ $item['price'] }} ({{ $item['movie']->price }})</p>
                 </div>
             </div>
         @empty
             <h1 class="text-center">Votre panier est vide</h1>
         @endforelse
+
+        @if (count($cart) > 0)
+        <p>Total du panier: {{ $total }}</p>
+        @endif
     </div>
 @endsection
