@@ -72,3 +72,6 @@ Route::get('/mon-compte', [AccountController::class, 'index'])->middleware('auth
 // Panier
 Route::get('/panier', [CartController::class, 'index']);
 Route::post('/panier/{movie}', [CartController::class, 'store']);
+
+// Pages avec React
+Route::get('/films-avec-react', [MovieController::class, 'react']);

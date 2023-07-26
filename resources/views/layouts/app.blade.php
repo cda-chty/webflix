@@ -25,6 +25,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Accueil</a>
                     <a class="nav-link {{ request()->is('films') ? 'active' : '' }}" href="/films">Films</a>
+                    <a class="nav-link {{ request()->is('films-avec-react') ? 'active' : '' }}" href="/films-avec-react">Films (React)</a>
                     <a class="nav-link {{ request()->is('categories') ? 'active' : '' }}" href="/categories">Catégories</a>
                     <a class="nav-link {{ request()->is('acteurs') ? 'active' : '' }}" href="/acteurs">Acteurs</a>
                     <a class="nav-link {{ request()->is('a-propos') ? 'active' : '' }}" href="/a-propos">A propos</a>
