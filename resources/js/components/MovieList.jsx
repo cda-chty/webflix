@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Movie from './Movie';
 
 function MovieList() {
     const [movies, setMovies] = useState([]);
@@ -27,11 +28,10 @@ function MovieList() {
     return (
         <div>
             <h1>Les films</h1>
-            <p>Intégrer les films sur 4 colonnes (avec une carte) avec titre, photo, category, durée</p>
-            <p>L'intégration devra se faire dans un composant qui aura pour props le movie</p>
-            {movies.map(movie =>
-                <div>{movie.title}</div>
-            )}
+
+            <div className="row row-cols-2 row-cols-lg-4">
+                {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+            </div>
         </div>
     );
 }
