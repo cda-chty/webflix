@@ -5,6 +5,12 @@ import Movie from './Movie';
 function MovieList() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [search, setSearch] = useState('');
+    const searched = () => {
+        return movies.filter(movie => {
+            return movie.title.toLowerCase().includes(search.toLowerCase());
+        });
+    }
 
     useEffect(() => {
         setLoading(true);
@@ -15,9 +21,9 @@ function MovieList() {
                 setLoading(false);
             }, 1000); // là on récupère les films
         });
-    }, []);
+    }, [search]);
 
-    if (loading) {
+    if (loading && false) {
         return (
             <div className="text-center my-5">
                 <div className="spinner-grow"></div>
@@ -27,10 +33,19 @@ function MovieList() {
 
     return (
         <div>
-            <h1>Les films</h1>
+            <div className="d-flex justify-content-between">
+                <h1>Les films</h1>
+                <div>
+                    <input type="text" className="form-control" value={search}
+                        placeholder="Recherche..." onChange={(e) => setSearch(e.target.value)} />
+                </div>
+            </div>
 
             <div className="row row-cols-2 row-cols-lg-4">
-                {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+                {!loading && searched().map(movie => <Movie key={movie.id} movie={movie} />)}
+                {loading && <div className="text-center my-5">
+                    <div className="spinner-grow"></div>
+                </div>}
             </div>
         </div>
     );
