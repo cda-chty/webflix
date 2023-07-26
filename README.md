@@ -71,3 +71,14 @@ Si on veut lister les routes de l'application :
 ```bash
 php artisan route:list
 ```
+
+## Ajouter React
+
+On doit déjà installer le plugin et React :
+
+```bash
+npm install --save-dev @vitejs/plugin-react
+npm install --save-dev react react-dom
+```
+
+Ensuite, on modifie le fichier `vite.config.js`.
