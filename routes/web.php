@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Models\Category;
+use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,3 +76,10 @@ Route::post('/panier/{movie}', [CartController::class, 'store']);
 
 // Pages avec React
 Route::get('/films-avec-react', [MovieController::class, 'react']);
+
+// API
+Route::get('/api/films', function () {
+    $movies = Movie::with('category', 'actors')->get();
+
+    return $movies;
+});
