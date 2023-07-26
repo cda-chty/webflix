@@ -43,10 +43,11 @@ function MovieList() {
 
             <div className="row row-cols-2 row-cols-lg-4">
                 {!loading && searched().map(movie => <Movie key={movie.id} movie={movie} />)}
-                {loading && <div className="text-center my-5">
-                    <div className="spinner-grow"></div>
-                </div>}
             </div>
+
+            {loading && <div className="text-center my-5">
+                <div className="spinner-grow"></div>
+            </div>}
         </div>
     );
 }
