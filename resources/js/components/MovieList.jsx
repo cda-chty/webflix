@@ -12,13 +12,15 @@ function MovieList() {
         });
     }
 
+    const [url, setUrl] = useState('http://localhost:8000/api/films');
     const fetchData = () => {
         setLoading(true);
         // Requête sur l'API pour aller chercher les films
-        axios.get('http://localhost:8000/api/films').then((response) => {
+        axios.get(url).then((response) => {
             setTimeout(() => {
-                setMovies([ ...movies, ...response.data ]); // On combine le tableau existant à chaque "pagination"
+                setMovies([ ...movies, ...response.data.data ]); // On combine le tableau existant à chaque "pagination"
                 setLoading(false);
+                setUrl(response.data.next_page_url); // Laravel nous fournit la page suivante ou null si c'est la dernière page
             }, 1000); // là on récupère les films
         });
     }
@@ -31,7 +33,7 @@ function MovieList() {
         // On doit "savoir" quand on est en bas de la page
         let diff = document.body.offsetHeight - (window.innerHeight + window.scrollY);
 
-        if (diff <= 100 && !loading) { // Pour éviter de spam le scroll
+        if (diff <= 100 && !loading && url) { // Pour éviter de spam le scroll
             fetchData();
         }
     };
