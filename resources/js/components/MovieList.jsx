@@ -12,24 +12,36 @@ function MovieList() {
         });
     }
 
-    useEffect(() => {
+    const fetchData = () => {
         setLoading(true);
         // Requête sur l'API pour aller chercher les films
         axios.get('http://localhost:8000/api/films').then((response) => {
             setTimeout(() => {
-                setMovies(response.data);
+                setMovies([ ...movies, ...response.data ]); // On combine le tableau existant à chaque "pagination"
                 setLoading(false);
             }, 1000); // là on récupère les films
         });
-    }, [search]);
-
-    if (loading && false) {
-        return (
-            <div className="text-center my-5">
-                <div className="spinner-grow"></div>
-            </div>
-        );
     }
+
+    useEffect(() => {
+        fetchData(); // J'ai rangé la récupération des données pour pouvoir appeler la fonction plus rapidement
+    }, []);
+
+    const handleScroll = () => {
+        // On doit "savoir" quand on est en bas de la page
+        let diff = document.body.offsetHeight - (window.innerHeight + window.scrollY);
+
+        if (diff <= 100 && !loading) { // Pour éviter de spam le scroll
+            fetchData();
+        }
+    };
+
+    useEffect(() => {
+        // Chaque fois que le state de loading change, on doit supprimer le listener et le recréer pour que la fonction accède au tableau movies à jour
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [loading]);
 
     return (
         <div>
@@ -42,7 +54,7 @@ function MovieList() {
             </div>
 
             <div className="row row-cols-2 row-cols-lg-4">
-                {!loading && searched().map(movie => <Movie key={movie.id} movie={movie} />)}
+                {searched().map((movie, index) => <Movie key={index} movie={movie} />)}
             </div>
 
             {loading && <div className="text-center my-5">
